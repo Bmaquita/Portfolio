@@ -1,0 +1,11 @@
+{% load static %} {% for message in messages %} {% if message.tags == 'success'%}
+
+<script>
+    swal("Great", "{{ message }}", "{% static 'img/site-icon.png'%}");
+</script>
+{% else %}
+<script>
+    swal("Sorry", "{{ message }}", "{% static 'img/site-icon.png'%}");
+</script>
+
+{% endif %} {% endfor %}

@@ -1,0 +1,469 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Start Hero Seciton -->
+<section class="st-hero st-style2 st-bg st-dynamic-bg st-ripple-version" data-src= "{% static 'img/background/bg3.jpg'%}">
+  <div class="container">
+    <div class="st-hero-text">
+      <div class="st-author"><img src="{% static 'img/dino.JPG'%}" alt=""></div>
+      <h1>Hi, I am <span>{{ contact_information.first_name }} {{ contact_information.last_name }}</span></h1>
+      <p>Welcome to my portfolio, where I showcase my skills, experiences, and projects as a Cyber Security Analyst and Web Developer enthusiast. I invite you to see how my passion and expertise can benefit you and organization.</p>
+      
+      {% if social_media %}
+        <div class="st-hero-social-links">
+          
+          {% for social in social_media %}
+
+            <a href="{{ social.link }}" target="blank" class="st-social-btn">
+              <i class="{{ social.icon }}"></i>
+            </a>
+          
+          {% endfor %}
+
+      {% endif %}
+        
+
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Hero Seciton -->
+
+  <!-- Start About Seciton -->
+  <section id="about" class="st-about-wrap">
+    
+    <div class="st-height-b100 st-height-lg-b80"></div>
+    <div class="container">
+      <div class="st-section-heading st-style1">
+        <h4 class="st-section-heading-title">ABOUT ME</h4>
+        <h2 class="st-section-heading-subtitle">ABOUT ME</h2>
+      </div>
+      <div class="st-height-b25 st-height-lg-b25"></div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 wow fadeInLeft">
+          <div class="st-about-img-wrap">
+            <div class="st-about-img st-dynamic-bg st-bg" style="border-radius: 60px;" data-src="{{ profile_foto.about_me_photo.url }}"></div>
+          </div>
+          <div class="st-height-b0 st-height-lg-b30"></div>
+        </div>
+        <div class="col-lg-6">
+          <div class="st-vertical-middle">
+            <div class="st-vertical-middle-in">
+                <!-- Personal informations data -->
+                {% if personal_informations %}
+
+                    {% for info in personal_informations %}
+                        <div class="st-text-block st-style1">
+                            <h2 class="st-text-block-title">Hi, Olá! I'm {{ info.first_name}} {{ info.last_name }}.</h2>
+                            <h4 class="st-text-block-subtitle">{{ info.title }}</h4>      
+                            <ul class="st-text-block-details st-mp0">
+                            <li><span>Phone</span> : <span>{{ info.phone_1}} {% if info.phone_2 %} | {{ info.phone_2}} {% endif %}</span></li>
+                            <li><span>Email</span> : <span>{{ info.email }}</span></li>
+                            <li><span>Address</span> : <span>{{ info.address }}</span></li>
+                            <li><span>Language</span> : <span>{{ info.languages }}</span></li>
+                            <li><span>Nationality</span> : <span>{{ info.nationality }}</span></li>
+                            </ul>
+                        </div>
+                    {% endfor %}
+
+                {% else %}
+                    <h4 class="st-text-block-subtitle">No Personal Information to be displayed yet</h4>
+                {% endif %}
+            <div class="st-text-block-btn">
+              <a href="{% get_media_prefix %}{{ cv.cv }}" target="_blank"class="st-btn st-style1 st-color1">Download CV</a>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End About Seciton -->
+
+  {% if skills %}
+  <!-- Start Service Seciton -->
+  <section>
+    <div class="st-height-b100 st-height-lg-b80"></div>
+    <div class="container">
+      <div class="st-section-heading st-style1">
+        <h4 class="st-section-heading-title">MY SKILLS</h4>
+        <h2 class="st-section-heading-subtitle">MY SKILLS</h2>
+      </div>
+      <div class="st-height-b25 st-height-lg-b25"></div>
+    </div>
+
+    <!-- Iconbox Container -->
+
+    <div class="container">
+      <div class="row">
+
+        {% for skill in skills %}
+            <div class="col-lg-4 col-md-6">
+            <div class="st-iconbox st-style1">
+                <div class="st-iconbox-icon">
+                    <img src="{{ skill.icon.url }}" height="80" width="80" alt="{{ skill.name }} skill">
+                </div>
+                <h2 class="st-iconbox-title">{{ skill.name }}</h2>
+                <div class="st-iconbox-text">{{ skill.description }}</div>
+            </div>
+            <div class="st-height-b30 st-height-lg-b30"></div>
+            </div><!-- .col -->
+        {% endfor %}
+
+      </div>
+    </div>
+    <div class="st-height-b100 st-height-lg-b80"></div>
+  </section>
+  <!-- End Service Seciton -->
+  {% endif %}
+
+  <!-- Start INTERESTS Seciton -->
+  {% if interests %}
+    <section class="st-dark-bg">
+        <div class="st-height-b100 st-height-lg-b80"></div>
+        <div class="container">
+        <div class="st-section-heading st-style1">
+            <h4 class="st-section-heading-title">MY INTERESTS</h4>
+            <h2 class="st-section-heading-subtitle">MY INTERESTS</h2>
+        </div>
+        <div class="st-height-b25 st-height-lg-b25"></div>
+        </div>
+
+        <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+            <div class="st-skill-wrap">
+                <div class="st-skill-heading">
+                <h2 class="st-skill-title">I enjoy pursuing a variety of interests.</h2>
+                <div class="st-skill-subtitle">I have a strong interest in several areas and am committed to gaining a deep understanding of them, so that I can effectively apply my knowledge in relevant work settings
+                </div>
+                </div><!-- .st-skill-heading -->
+            </div>
+            </div>
+
+            <!-- Progressbar -->
+
+            <div class="col-lg-6">
+            <div class="st-height-b0 st-height-lg-b30"></div>
+            
+            <div class="st-progressbar-wrap">
+                {% for interest in interests %}
+                    <div class="st-single-progressbar">
+                    <div class="st-progressbar-heading">
+                        <h3 class="st-progressbar-title">{{ interest.interests }}</h3>
+                        <div class="st-progressbar-percentage wow fadeInLeft" data-wow-duration="1.5s"
+                            data-wow-delay="0.5s">.</div>
+                    </div>
+                    <div class="st-progressbar" data-progress="100">
+                        <div class="st-progressbar-in wow fadeInLeft"></div>
+                    </div>
+                    </div><!-- .st-single-progressbar -->
+
+                    <div class="st-height-b30 st-height-lg-b20"></div>
+                {% endfor %}
+
+            </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <!-- End INTERESTS Seciton -->
+  {% endif %}
+
+  <!-- Start Resume Seciton -->
+  <section id="resume" class="st-dark-bg">
+    <div class="st-height-b100 st-height-lg-b80"></div>
+    <div class="container">
+      <div class="st-section-heading st-style1">
+        <h4 class="st-section-heading-title">RESUME</h4>
+        <h2 class="st-section-heading-subtitle">RESUME</h2>
+      </div>
+      <div class="st-height-b25 st-height-lg-b25"></div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <!-- Experience -->
+        {% if work_expirience %}
+            <div class="col-lg-6">
+            <div class="st-resume-wrap">
+                <div class="st-resume-heading">
+                <img src="{% static 'img/icon/resume-icon1.png' %}" alt="resume-icon">
+                <h2 class="st-resume-heading-title">Work Experience</h2>
+                </div>
+
+                <div class="st-height-b50 st-height-lg-b30"></div>
+
+                <div class="st-resume-timeline-wrap">
+                    {% for expirience in work_expirience %}
+                        <div class="st-resume-timeline">
+                            <h3 class="st-resume-timeline-title">{{ expirience.position }}</h3>
+                            <div class="st-resume-timeline-duration">{{ expirience.from_to_and_status }}</div>
+                            <h4 class="st-resume-timeline-subtitle">{{ expirience.employer }}</h4>
+                            <div class="st-resume-timeline-text">
+                            <p>{{ expirience.description }}</p>
+                            </div>
+                        </div> <!-- st-resume-timeline -->
+                        <div class="st-height-b50 st-height-lg-b30"></div>
+                    {% endfor %}
+
+                
+            
+                </div>
+            </div>
+            </div>
+        {% endif %}
+
+        <!-- Education -->
+        {% if education %}
+            <div class="col-lg-6">
+
+            <div class="st-height-b0 st-height-lg-b50"></div>
+            <div class="st-resume-wrap">
+                <div class="st-resume-heading">
+                <img src="{% static 'img/icon/resume-icon2.png' %}" alt="resume-icon">
+                <h2 class="st-resume-heading-title">Education</h2>
+                </div>
+                <div class="st-height-b50 st-height-lg-b30"></div>
+
+                <div class="st-resume-timeline-wrap">
+                    {% for education in education %}
+                        <div class="st-resume-timeline">
+                            <h3 class="st-resume-timeline-title">{{ education.course_name }}</h3>
+                            <div class="st-resume-timeline-duration">{{ education.from_to_and_status }}</div>
+                            <h4 class="st-resume-timeline-subtitle">{{ education.institution}}</h4>
+                            
+                        </div> <!-- st-resume-timeline -->
+
+                    {% endfor %}
+                    
+            </div>
+            </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="st-height-b100 st-height-lg-b80"></div>
+  </section>
+  <!-- End Resume Seciton -->
+
+  {% if course_page %}
+    <!-- Start of Courses and Certifications -->
+    <section id="portfolio">
+        <div class="st-height-b100 st-height-lg-b80"></div>
+        <div class="container">
+        <div class="st-section-heading st-style1">
+            <h4 class="st-section-heading-title">Courses & Certifications</h4>
+            <h2 class="st-section-heading-subtitle">Courses & Certifications</h2>
+        </div>
+        <div class="st-height-b25 st-height-lg-b25"></div>
+        </div>
+        <div class="container">
+        <div class="row">
+            {% for certification in course_page %}
+            <div class="col-lg-4 col-md-6">
+              
+            <div class="st-portfolio-single st-style1 ">
+                
+                <div class="st-portfolio-item">
+                <a href="{{ certification.link }}" target="_blank" class="st-portfolio st-zoom">
+                    <div class="st-portfolio-img st-zoom-in">
+                    <img src="{{ certification.certificate.url }}" alt="certification">
+                    </div>
+                    <div class="st-portfolio-item-hover">
+                    <i class="fa fa-link"></i>
+                    <h5>{{ certification.name }}</h5>
+                   
+                    </div>
+                </a>
+                </div>
+                
+            </div>
+           
+            </div>
+            {% endfor %}
+            {% if course_page.has_other_pages%}
+            <div class="col-lg-12 text-center">
+              <nav>
+              <ul class="pagination">
+                {% if course_page.has_previous %}
+                    <li class="page-item">
+                      <a class="page-link text-white bg-dark" href="?page={{ course_page.previous_page_number }}">&laquo;</a>
+                    </li>
+                {% else %}
+                    <li class="page-item disabled">
+                      <span class="page-link  bg-dark">&laquo;</span>
+                  </li>
+
+                {% endif %}
+
+                  {% for page_number in course_page.paginator.page_range %}
+                      
+                      {% if course_page.number == page_number %}
+                          <li class="page-item active">
+                            <span class="page-link bg-dark" style="border-color:#222333;">{{ page_number }} <span class="sr-only bg-warning">(current)</span></span>
+                        </li>
+
+
+                      {% else %}
+                          <li class="page-item">
+                            <a class="page-link text-dark bg-warning" href="?page={{ page_number }}">{{ page_number }}</a>
+                        </li>
+                      {% endif %}
+                  {% endfor %}
+
+                {% if course_page.has_next %}
+                <li class="page-item">
+                  <a class="page-link  bg-dark text-white" href="?page={{ course_page.next_page_number }}">&raquo;</a>
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                  <span class="page-link  bg-dark">&raquo;</span>
+              </li>
+
+               {% endif %}
+              </nav>
+            </div>
+            {% endif %}
+        </div>
+        </div>
+        <div class="st-height-b100 st-height-lg-b80"></div>
+    </section>
+    <!-- End Courses and Certifications Seciton -->
+
+  {% endif %}
+
+  {% if projects %}
+  <!-- Start Projects Seciton -->
+  <section id="portfolio">
+    <div class="st-height-b100 st-height-lg-b80"></div>
+    <div class="container">
+      <div class="st-section-heading st-style1">
+        <h4 class="st-section-heading-title">PROJECTS</h4>
+        <h2 class="st-section-heading-subtitle">PROJECTS</h2>
+      </div>
+      <div class="st-height-b25 st-height-lg-b25"></div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-6">
+          <div class="st-portfolio-single st-style1 st-lightgallery">
+            <div class="st-portfolio-item">
+              <a href="assets/img/portfolio/portfolio1_lg.jpg" class="st-portfolio st-zoom st-lightbox-item">
+                <div class="st-portfolio-img st-zoom-in">
+                  <img src="assets/img/portfolio/portfolio1.jpg" alt="portfolio">
+                </div>
+                <div class="st-portfolio-item-hover">
+                  <i class="fas fa-plus-circle"></i>
+                  <h5>Product Design</h5>
+                  <p>Design / Marketing</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+       
+        <div class="col-lg-12 text-center">
+          <div class="st-portfolio-btn">
+            <a href="#" class="st-btn st-style1 st-color1">Load More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="st-height-b100 st-height-lg-b80"></div>
+  </section>
+  <!-- End projects Seciton -->
+  {% endif %}
+
+  <!-- Start Contact Seciton -->
+  <section id="contact" class="st-dark-bg">
+    <div class="st-height-b100 st-height-lg-b80"></div>
+    <div class="container">
+      <div class="st-section-heading st-style1">
+        <h4 class="st-section-heading-title">CONTACT ME</h4>
+        <h2 class="st-section-heading-subtitle">CONTACT ME</h2>
+      </div>
+      <div class="st-height-b25 st-height-lg-b25"></div>
+    </div>
+
+    <!-- Contact Container -->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <h3 class="st-contact-title">Get in Touch</h3>
+          <div id="st-alert"></div>
+          <form  method="POST" action =  "{% url 'contact' %}" class="st-contact-form">
+            {% csrf_token %}
+            <div class="st-form-field">
+              <input type="text" id="name" name="name" placeholder="Your Name" required>
+            </div>
+            <div class="st-form-field">
+              <input type="text" id="email" name="email" placeholder="Your Email" required>
+            </div>
+            <div class="st-form-field">
+              <input type="text" id="subject" name="subject" placeholder="Your Subject" required>
+            </div>
+            <div class="st-form-field">
+              <textarea cols="30" rows="10" id="msg" name="msg" placeholder="Your Message" required></textarea>
+            </div>
+            <button class="st-btn st-style1 st-color1" type="submit" id="submit" name="submit">Send message</button>
+          </form>
+        </div>
+        <div class="st-height-b0 st-height-lg-b30"></div>
+
+        <div class="col-lg-6">
+          <div class="st-height-b0 st-height-lg-b40"></div>
+          <h3 class="st-contact-title">Contact Info</h3>
+          
+          <div class="st-contact-info-wrap">
+            <div class="st-single-contact-info">
+              <i class="fa fa-envelope"></i>
+              <div class="st-single-info-details">
+                <h4>Email</h4>
+                <a href="mailto:{{ contact_information.email }}">{{ contact_information.email }}</a> </div>
+            </div>
+            <div class="st-single-contact-info">
+              <i class="fa fa-phone"></i>
+              <div class="st-single-info-details">
+                <h4>Phone</h4>
+                <span>{{ contact_information.phone_1 }}</span>
+                    {% if contact_information.phone_2 %}
+                        
+                        <span>{{ contact_information.phone_2}}</span>
+                    
+                    {% endif %}
+              </div>
+            </div>
+            <div class="st-single-contact-info">
+              <i class="fa fa-map-marker"></i>
+              <div class="st-single-info-details">
+                <h4>Address</h4>
+                <span>{{ contact_information.address }}</span>
+              </div>
+            </div>
+
+            {% if social_media %}
+                <div class="st-social-info">
+                <div class="st-social-text">Visite my social profile and get connected</div>
+                <div class="st-social-link">
+                    {% for social in social_media %}
+                    <a href="{{ social.link }}" target="_blank" class="st-social-btn">
+                    <span class="st-social-icon"><i class="{{ social.icon }}"></i></span>
+                    <span class="st-icon-name">{{ social.name }}</span>
+                    </a>
+                    {% endfor %}
+                </div>
+
+                </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="st-height-b100 st-height-lg-b80"></div>
+  </section>
+  <!-- End Contact Seciton -->
+
+{% endblock %}
